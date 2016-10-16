@@ -18,7 +18,10 @@ Tried for the moment only use http-server with `http-server -S -C cert.pem -p 34
 Create certificates with `openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem`
 But Heroku doesn't support SSL on free dynos, nor HTTP/2.
 
-Now trying simple Express http server instead.
+Now trying simple Express http server instead. Deploy to Heroku works now, but gives the error that a secure origin is required: https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features It seems that it only worked because it was on localhost.
+
+Alternatives are nodejitsu (1 free open source, outdated??), redhat openshift (3 free).
+Probably self hosting is better, but it is not possible to use DevOps in that case. I can use http/2 in that case: https://webapplog.com/http2-node/
 
 
 # DevOps
