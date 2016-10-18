@@ -7,7 +7,11 @@ var common = {
 
     entry: './src/app.js',
 
-
+    resolve: {
+        alias: {
+            'vue': 'vue/dist/vue'
+        }
+    },
 
     output: {
         path: path.join(__dirname, 'public/js'),

@@ -4,71 +4,80 @@
 		<title>PWA demo</title>
 		<link rel="manifest" href="manifest.json"/>
 		<meta name="theme-color" content="#db5945"/>
-		<script src="js/main.js"></script>
-		<style>
-			html, body {
-				font-family: sans-serif;
-			}
-		</style>
-	</head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+            #curlCommand {
+                height: 5em;
+                margin: 1em 0;
+                width: 100%;
+            }
+        </style>
+		<script async src="js/pwa.bundle.js"></script>
+    </head>
 	<body>
-		<h1>PWA demo</h1>
-		<p>
-		This is a Progressive Web App test, with:
-		* homescreen (see https://developer.chrome.com/multidevice/android/installtohomescreen)
-		* ServiceWorker notification
-		* TODO ServiceWorker CacheAPI
-		</p>
+        <div class="container" id="app">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>PWA demo</h1>
 
-		<p>Visit on Github: https://github.com/mdvanes/pwa-demo/</p>
+                    <my-comp v-bind:msg="message"></my-comp>
 
-		<p>
-		In Chrome 47 and later, a splash screen is displayed for a web application launched from a home screen. This splashscreen is auto-generated using properties in the web app manifest, specifically: name, background_color, and the icon in the icons array that is closest to 128dpi for the device.</p>
+                    <p>
+                        This is a Progressive Web App test, with:
+                        <li><a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a></li>
+                        <li>ServiceWorker notification</li>
+                        <li>TODO ServiceWorker CacheAPI</li>
+                    </p>
 
-		<p>
-		"display": "standalone",
-		The application will look and feel like a standalone application. This can include the application having a different window, its own icon in the application launcher, etc. In this mode, the user agent will exclude UI elements for controlling navigation, but can include other UI elements such as a status bar.</p>
+                    <p>Visit on Github: https://github.com/mdvanes/pwa-demo/</p>
+                    <p>This app runs on Heroku: https://mdworld-pwa-demo.herokuapp.com</p>
 
-		<p>
-			background_color
+                    <p>
+                        In Chrome 47 and later, a splash screen is displayed for a web application launched from a home screen. This splashscreen is auto-generated using properties in the web app manifest, specifically: name, background_color, and the icon in the icons array that is closest to 128dpi for the device.</p>
 
-Defines the expected background color for the web application. This value repeats what is already available in the application stylesheet, but can be used by browsers to draw the background color of a web application when the manifest is available before the style sheet has loaded. This creates a smooth transition between launching the web application and loading the application's content.
-		</p>
+                    <p>
+                        "display": "standalone",
+                        The application will look and feel like a standalone application. This can include the application having a different window, its own icon in the application launcher, etc. In this mode, the user agent will exclude UI elements for controlling navigation, but can include other UI elements such as a status bar.</p>
 
-		<p>
-			theme_color
+                    <p>
+                        background_color
 
-Defines the default theme color for an application. This sometimes affects how the application is displayed by the OS (e.g., on Android's task switcher, the theme color surrounds the application).
+                        Defines the expected background color for the web application. This value repeats what is already available in the application stylesheet, but can be used by browsers to draw the background color of a web application when the manifest is available before the style sheet has loaded. This creates a smooth transition between launching the web application and loading the application's content.
+                    </p>
 
-Should work, but for now using the theme-color meta tag as a fallback.
-		</p>
+                    <p>
+                        theme_color
 
-		<p>
-            Inspect/unregister: chrome://serviceworker-internals/
+                        Defines the default theme color for an application. This sometimes affects how the application is displayed by the OS (e.g., on Android's task switcher, the theme color surrounds the application).
 
-			gcm_sender_id is for notifications, see https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
+                        Should work, but for now using the theme-color meta tag as a fallback.
+                    </p>
 
-			https://android.googleapis.com/gcm/send/cxduDIcKfd4:APA91bHGhWaD4kcdECqMzHFXiULyn6SsORp3BMPHFZ14BrIP1mlnIZDSO4WE8QadKZnt8IsNQ7e-7fctH0okNDKh2W_blLaPoqEwTCza-j-bGUc1ZGY9dvUSRGTYPfakHkafa37dXjU6
+                    <p>
+                        Inspect/unregister: chrome://serviceworker-internals/
 
-			Watch out: when getting MismatchSenderID after gcm_sender_id in manifest changed? Remove the "notifications" permission and reload and re-allow. Only then a new subscription_id is generated.
+                        gcm_sender_id is for notifications, see https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
 
-			curl --header "Authorization: key=<SERVER_API_KEY>" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"<SUBSCRIPTION_ID>\"]}"
+                        https://android.googleapis.com/gcm/send/cxduDIcKfd4:APA91bHGhWaD4kcdECqMzHFXiULyn6SsORp3BMPHFZ14BrIP1mlnIZDSO4WE8QadKZnt8IsNQ7e-7fctH0okNDKh2W_blLaPoqEwTCza-j-bGUc1ZGY9dvUSRGTYPfakHkafa37dXjU6
 
-			On command line:
-			curl --header "Authorization: key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"cxduDIcKfd4:APA91bHGhWaD4kcdECqMzHFXiULyn6SsORp3BMPHFZ14BrIP1mlnIZDSO4WE8QadKZnt8IsNQ7e-7fctH0okNDKh2W_blLaPoqEwTCza-j-bGUc1ZGY9dvUSRGTYPfakHkafa37dXjU6\"]}"
-		</p>
+                        Watch out: when getting MismatchSenderID after gcm_sender_id in manifest changed? Remove the "notifications" permission and reload and re-allow. Only then a new subscription_id is generated.
 
-		<div id="currentSubscriptionKey" style="border: 1px solid red;"></div>
+                        curl --header "Authorization: key=&lt;SERVER_API_KEY&gt;" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"&lt;SUBSCRIPTION_ID&gt;\"]}"
 
-		<textarea id="curlCommand" cols="30" rows="10" style="border: 1px solid red;"></textarea>
+                        On command line:
+                        curl --header "Authorization: key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"cxduDIcKfd4:APA91bHGhWaD4kcdECqMzHFXiULyn6SsORp3BMPHFZ14BrIP1mlnIZDSO4WE8QadKZnt8IsNQ7e-7fctH0okNDKh2W_blLaPoqEwTCza-j-bGUc1ZGY9dvUSRGTYPfakHkafa37dXjU6\"]}"
+                    </p>
 
-		<p>
-			TODO
-			1. add info block that notification API only works in Chrome!
-			2. github > travis > heroku
-			3. backend service
-			4. bootstrap
-			5. webpack, ts (es6 without babel even better?), vue/react
-		</p>
+                    <div id="currentSubscriptionKey" style="border: 1px solid red;"></div>
+
+                    <div class="form-group">
+                        <textarea id="curlCommand"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
 	</body>
 </html>
