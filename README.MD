@@ -23,6 +23,8 @@ Now trying simple Express http server instead. Deploy to Heroku works now, but g
 Alternatives are nodejitsu (1 free open source, outdated??), redhat openshift (3 free).
 Probably self hosting is better, but it is not possible to use DevOps in that case. I can use http/2 in that case: https://webapplog.com/http2-node/
 
+Update: Interestingly enough, when deploying an HTTP server on Heroku, apparently it's automatically also accessible over https: https://mdworld-pwa-demo.herokuapp.com/
+
 
 # DevOps
 
