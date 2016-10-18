@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import {loadServiceWorker} from './load-service-worker';
-import {experimentWarning} from './experiment-warning';
+import {loadServiceWorker} from './util/load-service-worker';
+import {experimentWarning} from './components/experiment-warning';
 
 const vueApp = new Vue({
     el: '#app',
     data: {
-        message: 'hello world'
+        message: 'This is an experimental PWA. Be warned that the Notification API only works under latest Chrome.'
     }
 });
 
