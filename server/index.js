@@ -16,15 +16,15 @@ const options = {
 app.use(express.static('public'));
 
 // HTTP (only works on localhost) disable for production
-http.createServer(app).listen(3080, 
-    () => console.log('mdworld-pwa-demo listening at http://localhost:3080')
+http.createServer(app).listen(port, 
+    () => console.log('mdworld-pwa-demo listening at http://localhost:'+port)
 );
 // HTTPS (same problem as HTTP/2, can't retrieve the serviceworker.js)
 // Might work: Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/tmp/foo --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://your.insecure.site
 // See https://bugs.chromium.org/p/chromium/issues/detail?id=561820
-https.createServer(options, app).listen(port,
-    () => console.log('mdworld-pwa-demo listening at https://localhost:' + port)
-);
+// https.createServer(options, app).listen(port,
+//     () => console.log('mdworld-pwa-demo listening at https://localhost:' + port)
+// );
 // HTTP/2
 /*
 TODO might just need this:
