@@ -1,6 +1,7 @@
 # The goal of this demo
 
-Visit the running web app at http://mdworld-pwa-demo.herokuapp.com
+Source on Github: https://github.com/mdvanes/pwa-demo/
+Visit the running web app at https://mdworld-pwa-demo.herokuapp.com
 
 A showcase for Homescreen, Service Worker Notifications, Service Worker Cache API.
 This should work on Chrome and Chrome Mobile.
@@ -35,4 +36,11 @@ Heroku starts by running the Procfile.
 
 # TODO
 
-* rename repo to match Heroku
+* es6 build target?
+* build with npm instead of `node node_modules/webpack/bin/webpack.js`
+* webpack dev server
+* add info block that notification API only works in Chrome!
+* TODO ServiceWorker CacheAPI
+* Revise documentation
+* backend service for notification API
+* webpack, ts (es6 without babel even better?), vue/react

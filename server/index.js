@@ -2,16 +2,16 @@
 /* jshint esnext:true */
 const express = require('express');
 const app = express();
-const spdy = require('spdy');
+//const spdy = require('spdy');
 const http = require('http');
-const https = require('https');
-const fs = require('fs');
+//const https = require('https');
+//const fs = require('fs');
 const port = process.env.PORT || 3000;
 
-const options = {
-    key: fs.readFileSync(__dirname + '/key.pem'),
-    cert:  fs.readFileSync(__dirname + '/cert.pem')
-};
+//const options = {
+//    key: fs.readFileSync(__dirname + '/key.pem'),
+//    cert:  fs.readFileSync(__dirname + '/cert.pem')
+//};
 
 app.use(express.static('public'));
 
