@@ -21,9 +21,9 @@ var common = {
     devtool: 'source-map',
 
     // Add minification
-    //plugins: [
-    //    new webpack.optimize.UglifyJsPlugin()
-    //],
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin()
+    ],
 
     module: {
         loaders: [

@@ -6,7 +6,7 @@ import Vue from 'vue';
 Vue.component('experiment-warning', {
     props: ['msg'],
     data: function() {
-        return {showMsg: true};
+        return {isChrome: navigator.appVersion && navigator.appVersion.indexOf('Chrome/') > -1};
     },
-    template: '<span class="my-comp"><p v-if="showMsg">{{msg}}</p></span>' // TODO import from template with webpack
+    template: '<div v-if="!isChrome" class="my-comp bg-danger"><p>{{msg}}</p></div>' // TODO import from template with webpack
 });
