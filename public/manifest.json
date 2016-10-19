@@ -1,6 +1,6 @@
 {
-  "name": "my-homescreen-push-test",
-  "description": "A test for adding a webapp to the Homescreen!",
+  "name": "mdworld-pwa-demo",
+  "description": "Demo for Progressive Web App",
   "icons": [
     {
       "src": "launcher-icon-4x.png",

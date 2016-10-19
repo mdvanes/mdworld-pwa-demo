@@ -1,5 +1,5 @@
 {
-  "name": "pwa-demo",
+  "name": "mdworld-pwa-demo",
   "version": "1.0.0",
   "description": "Demo for Progressive Web App",
   "scripts": {
@@ -31,7 +31,6 @@
     "eslint": "^3.8.1",
     "eslint-loader": "^1.6.0",
     "vue": "^2.0.3",
-    "webpack": "^1.13.2",
-    "webpack-merge": "^0.15.0"
+    "webpack": "^1.13.2"
   }
 }
