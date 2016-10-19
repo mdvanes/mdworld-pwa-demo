@@ -1,7 +1,9 @@
 language: node_js
 node_js:
 - stable
+script: npm run dist
 deploy:
+  skip_cleanup: true
   provider: heroku
   api_key:
     secure: JxFH0bG/219aE8N9QRH0N3u+i3nUkjZi8/O/zQlTAyImBROPcnleLBp+k0Q39J20ZIGOQR8kCAP1efr5Zo1LdbH5sJt50Z3vx4XBrBukfWLJncXfqCFdoNieT/NbTYVUiVDujwgkuU/wNYoGWj1KsuB4A0eUOeEFBSqgYUYxrCxqnA87nHJvxZLIJmImno/L7AEjRSR+dDZdcBqNFsSKuE+OqPTXFX+Ak7yD70OTCpKXrOy/uOYEZro3UJB03pfhcLZyQyc6VnvXQQNHPdB86jufkUU3RBd8XlwOBxUwWSLrTji2Iaie67Jw8hV2v9qGEwnd+/LFJm2BWoCxI162PRxo/rnUoZlIj5dHSHQVF17qMKyqh8DMciRymZPfgo1VVYSuxHx4P5gwHjGM4+W7xpFaT5A6rrlpW6o6E31kwmu2ONrY22NgZ4Kdp3kX/CnwQzPMZzW1LYmSodMQhNHwUonbGux3/YvFbvsV6bKJDZ9xaPAY1JsNcRY2mOGEwXz2Sn+/dvDEo8w6Msv9EawEx0aY3dRLpQR+ydRCUyQJifQUvbcCEH7Yh/hnW11T+UYgBZMX0GT6SPELKjPQB+J8SoIqtSROac6LqDp/0jBp/bgHDrv81N612mEQ1JkM3xaHT7tn5VjEHBCo5TeXK/MFaPL58ferhcSk1g9j8/QvmQE=
