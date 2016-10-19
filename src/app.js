@@ -9,4 +9,7 @@ const vueApp = new Vue({ // eslint-disable-line no-unused-vars
     }
 });
 
+// Not only eslint but also Uglify complains about unused vars
+console.log(experimentWarning, vueApp);
+
 loadServiceWorker();

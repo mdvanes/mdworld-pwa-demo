@@ -9,7 +9,7 @@ var common = {
 
     resolve: {
         alias: {
-            'vue': 'vue/dist/vue'
+            'vue': 'vue/dist/vue.min'
         }
     },
 
@@ -18,11 +18,16 @@ var common = {
         filename: 'pwa.bundle.js'
     },
 
+    // Add source maps
     devtool: 'source-map',
 
     // Add minification
     plugins: [
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            exclude: [
+                /node_modules/
+            ]
+        })
     ],
 
     module: {
