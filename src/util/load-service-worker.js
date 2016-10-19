@@ -1,5 +1,5 @@
 // TODO review/refactor
-export const loadServiceWorker = () => {
+const loadServiceWorker = () => {
     if ('serviceWorker' in navigator) {
         console.log('Service Worker is supported');
         // this doesn't work: navigator.serviceWorker.register('/public/homescreen/sw/sw.js').then(function() {
@@ -23,3 +23,5 @@ export const loadServiceWorker = () => {
             });
     }
 };
+
+export {loadServiceWorker};

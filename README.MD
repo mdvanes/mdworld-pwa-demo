@@ -42,12 +42,10 @@ Heroku starts by running the Procfile.
 
 # TODO
 
-* es6 build target?
-* build on travis, don't check in compiled js
 * register Vue component in app.js
 * add info block that notification API only works in Chrome!
 * TODO ServiceWorker CacheAPI
-* Revise documentation
+* Revise documentation on index.html
 * backend service for notification API
-* webpack, ts (es6 without babel even better?), vue/react
-* webpack: uglify warnings
+* webpack: uglify gives warnings
+* es6 build target instead of es5 (or is this default?)

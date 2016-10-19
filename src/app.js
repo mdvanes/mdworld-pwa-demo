@@ -1,15 +1,16 @@
 import Vue from 'vue';
 import {loadServiceWorker} from './util/load-service-worker';
-import {experimentWarning} from './components/experiment-warning'; // eslint-disable-line no-unused-vars
+import {experimentWarning} from './components/experiment-warning';
 
-const vueApp = new Vue({ // eslint-disable-line no-unused-vars
+// Register Vue components before initializing Vue App
+Vue.component('experiment-warning', experimentWarning);
+
+// Initialize Vue App
+new Vue({
     el: '#app',
     data: {
         message: 'This is an experimental PWA. Be warned that the Notification API only works under latest Chrome.'
     }
 });
-
-// Not only eslint but also Uglify complains about unused vars
-console.log(experimentWarning, vueApp);
 
 loadServiceWorker();

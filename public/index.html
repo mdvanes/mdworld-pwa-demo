@@ -23,12 +23,19 @@
 
                     <experiment-warning v-bind:msg="message"></experiment-warning>
 
-                    <p>
-                        This is a Progressive Web App test, with:
-                        <li><a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a></li>
-                        <li>ServiceWorker notification</li>
-                        <li>TODO ServiceWorker CacheAPI</li>
-                    </p>
+                    <div class="panel panel-default">
+                        <!--<div class="panel-heading"></div>-->
+                        <div class="panel-body">
+                            <p>
+                                This is a Progressive Web App test, with:
+                            </p>
+                            <ul>
+                                <li><a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a></li>
+                                <li>ServiceWorker notification</li>
+                                <li><em>@TODO</em> ServiceWorker CacheAPI</li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <p>Visit on Github: https://github.com/mdvanes/pwa-demo/</p>
                     <p>This app runs on Heroku: https://mdworld-pwa-demo.herokuapp.com</p>
