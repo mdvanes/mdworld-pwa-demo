@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var path = require('path');
-var merge = require('webpack-merge');
+//var merge = require('webpack-merge');
 var webpack = require('webpack');
 
 var common = {
@@ -30,7 +30,7 @@ var common = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loaders: ['babel-loader', 'eslint-loader']
             }
         ]
     }
