@@ -4,6 +4,7 @@
 		<title>PWA demo</title>
 		<link rel="manifest" href="manifest.json"/>
 		<meta name="theme-color" content="#db5945"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <style>
             #curlCommand {
@@ -53,7 +54,7 @@
                         Should work, but for now using the theme-color meta tag as a fallback.
                     </p>
 
-                    <p>
+                    <p style="word-break: break-all;">
                         Inspect/unregister: chrome://serviceworker-internals/
 
                         gcm_sender_id is for notifications, see https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
@@ -68,7 +69,7 @@
                         curl --header "Authorization: key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"cxduDIcKfd4:APA91bHGhWaD4kcdECqMzHFXiULyn6SsORp3BMPHFZ14BrIP1mlnIZDSO4WE8QadKZnt8IsNQ7e-7fctH0okNDKh2W_blLaPoqEwTCza-j-bGUc1ZGY9dvUSRGTYPfakHkafa37dXjU6\"]}"
                     </p>
 
-                    <div id="currentSubscriptionKey" style="border: 1px solid red;"></div>
+                    <div id="currentSubscriptionKey" style="border: 1px solid red; word-break: break-all;"></div>
 
                     <div class="form-group">
                         <textarea id="curlCommand"></textarea>
