@@ -34,11 +34,19 @@ Travis-ci depends on the .travis.yml. It has an API key for heroku. It was not p
 Heroku starts by running the Procfile.
 
 
+# Commands
+
+* Start server: npm start
+* Prod build: npm run prod-build
+
+
 # TODO
 
 * es6 build target?
 * build with npm instead of `node node_modules/webpack/bin/webpack.js`
-* webpack dev server
+* build on travis, don't check in compiled js
+* webpack eslint
+* register Vue component in app.js
 * add info block that notification API only works in Chrome!
 * TODO ServiceWorker CacheAPI
 * Revise documentation
