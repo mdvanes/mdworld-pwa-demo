@@ -5,18 +5,10 @@ const express = require('express');
 const app = express();
 //const spdy = require('spdy');
 const http = require('http');
-//const https = require('https');
-//const https = require('follow-redirects').https;
 const gcm = require('node-gcm');
-//const fs = require('fs');
 const port = process.env.PORT || 3000;
 const startTime = (new Date()).getTime(); // Server start time
 const subscriptions = [];
-
-//const options = {
-//    key: fs.readFileSync(__dirname + '/key.pem'),
-//    cert:  fs.readFileSync(__dirname + '/cert.pem')
-//};
 
 // If true, periodically send notifications of the uptime of this server with FirebaseCM to all registered service workers
 let sendUptimeUpdates = false;
@@ -55,21 +47,19 @@ function notify(msg) {
     console.log(msg, subscriptions);
     // TODO iterate over all keys (test)
 
-    // TODO change the contents of the message
     /*
-    Not so easy. The tutorial so far is for chrome < 50. In this article (https://developers.google.com/web/updates/2016/03/web-push-encryption) it says:
-
-     Prior to Chrome 50, push messages could not contain any payload data. When the 'push' event fired in your service worker,
-     all you knew was that the server was trying to tell you something, but not what it might be.
-     You then had to make a follow up request to the server and obtain the details of the notification to show, which might fail in poor network conditions.
-     */
-
+    Change the contents of the message: not so easy. It should be possible to set a notification property with a title and body in the gcm.Message.
+    But the tutorial so far is for chrome < 50. In this article (https://developers.google.com/web/updates/2016/03/web-push-encryption) it says:
+        Prior to Chrome 50, push messages could not contain any payload data. When the 'push' event fired in your service worker,
+        all you knew was that the server was trying to tell you something, but not what it might be.
+        You then had to make a follow up request to the server and obtain the details of the notification to show, which might fail in poor network conditions.
+    */
     const message = new gcm.Message({
-        data: { key1: 'msg1' },
-        notification: {
-            title: 'Hello, World',
-            body: 'las;kdfjlasdkjflaskdjf'
-        }
+        //data: { key1: 'msg1' },
+        //notification: {
+        //    title: 'Hello, World',
+        //    body: 'las;kdfjlasdkjflaskdjf'
+        //}
     });
     const sender = new gcm.Sender('AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0');
     sender.send(message, { registrationTokens: subscriptions }, (err, response) => {
@@ -79,24 +69,6 @@ function notify(msg) {
             console.log(response);
         }
     });
-
-    //const options = {
-    //    host: 'android.googleapis.com',
-    //    path: '/gcm/send',
-    //    headers: {
-    //        'Authorization': 'key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0',
-    //        'Content-Type': 'application/json'
-    //    }
-    //};
-    //const req = https.request(options, response => {
-    //    console.log('notify response: ', response);
-    //    response.on('data', (chunk) => {
-    //        console.log(`BODY: ${chunk}`);
-    //    });
-    //});
-    //// TODO use querystring.stringify to build this data that is passed to req.write - var querystring = require('querystring');
-    //req.write("{\"registration_ids\":[\"e1zoTBv_GDQ:APA91bEpN-mpbdZ6eQGA7NgiAR1742RQecuJ1F3ozfbarTcElfdsK8I4iYBwjg-W7NY3w2zNUQkTT7DPUnIcvhDjegmmsLaB3cNKKdsEbGOGbK6VBmzwZFe7w2YNv_75H9U-5ng-Oau9\"]}");
-    //req.end();
 }
 
 app.get('/subscribe', (req, res) => {

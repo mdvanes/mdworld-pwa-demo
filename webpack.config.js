@@ -24,13 +24,13 @@ var common = {
     devtool: 'source-map',
 
     // Add minification
-    //plugins: [
-    //    new webpack.optimize.UglifyJsPlugin({
-    //        exclude: [
-    //            /node_modules/
-    //        ]
-    //    })
-    //],
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            exclude: [
+                /node_modules/
+            ]
+        })
+    ],
 
     module: {
         loaders: [
