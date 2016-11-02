@@ -2,8 +2,8 @@
 const loadServiceWorker = () => {
     if ('serviceWorker' in navigator) {
         console.log('Service Worker is supported');
-        // this doesn't work: navigator.serviceWorker.register('/public/homescreen/sw/sw.js').then(function() {
-        navigator.serviceWorker.register('serviceworker.js')
+        // serviceworker.js in sub dir doesn't work: navigator.serviceWorker.register('/public/homescreen/sw/sw.js').then(function() {
+        navigator.serviceWorker.register('sw.bundle.js')
             .then(function() {
                 return navigator.serviceWorker.ready;
             }).then(function(reg) {

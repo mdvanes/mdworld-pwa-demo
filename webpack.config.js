@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 var path = require('path');
-//var merge = require('webpack-merge');
 var webpack = require('webpack');
 
 var common = {
 
-    entry: './src/app.js',
+    entry: {
+        pwa: './src/app.js',
+        sw: './src/serviceworker.js'
+    },
 
     resolve: {
         alias: {
@@ -14,21 +16,21 @@ var common = {
     },
 
     output: {
-        path: path.join(__dirname, 'public/js'),
-        filename: 'pwa.bundle.js'
+        path: path.join(__dirname, 'public'), // Should be public/js, but serviceworker must be in the project root at the moment
+        filename: '[name].bundle.js'
     },
 
     // Add source maps
     devtool: 'source-map',
 
     // Add minification
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            exclude: [
-                /node_modules/
-            ]
-        })
-    ],
+    //plugins: [
+    //    new webpack.optimize.UglifyJsPlugin({
+    //        exclude: [
+    //            /node_modules/
+    //        ]
+    //    })
+    //],
 
     module: {
         loaders: [
