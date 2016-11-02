@@ -3,7 +3,7 @@
 	<head>
 		<title>PWA demo</title>
 		<link rel="manifest" href="manifest.json"/>
-		<meta name="theme-color" content="#db5945"/>
+		<meta name="theme-color" content="#247324"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <style>
@@ -34,20 +34,54 @@
                                 <li>ServiceWorker notification</li>
                                 <li><em>@TODO</em> ServiceWorker CacheAPI</li>
                             </ul>
-                            <a href="https://github.com/mdvanes/pwa-demo/"><span class="label label-primary">Sources on Github</span></a>
-                            <a class="btn btn-primary btn-sm" href="https://mdworld-pwa-demo.herokuapp.com">Run on Heroku</a>
+                            <a class="btn btn-primary btn-sm" href="https://github.com/mdvanes/pwa-demo/" target="_blank">Sources on Github</a>
+                            <a class="btn btn-primary btn-sm" href="https://mdworld-pwa-demo.herokuapp.com" target="_blank">Run on Heroku</a>
                         </div>
                     </div>
 
                     <p>
                         <a href="http://localhost:3000/sendUptime?send=true">http://localhost:3000/sendUptime?send=true</a>
                         <a id="subscribeLink" href="">http://localhost:3000/subscribe?key=</a>
+                        <a id="debug" href="http://localhost:3000/debugnotify">debug</a>
                     </p>
 
                     <p>Visit on Github: https://github.com/mdvanes/pwa-demo/</p>
                     <p>This app runs on Heroku: https://mdworld-pwa-demo.herokuapp.com</p>
 
+                    <h2>Homescreen</h2>
                     <p>
+                        Following the <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a> spec, it's possible to install this site like an app to the Homescreen of an Android device.
+                        To install:
+                    </p>
+                    <ul>
+                        <li>Open this site on Chrome Mobile 47 or higher</li>
+                        <li>Use the menu to select "Save to homescreen"</li>
+                        <li>Now an icon will be added to the homescreen of the Android device</li>
+                        <li>When started with this icon, a splash screen will be shown. This splash screen is generated from the web app manifest.json.</li>
+                        <li>The app now runs as a standalone process.</li>
+                    </ul>
+                    <p>These features can be further explained based on my manifest.json:</p>
+                        <pre>
+{
+  "name": "mdworld-pwa-demo",
+  "description": "Demo for Progressive Web App",
+  // Path to the icon that can be used on the homescreen
+  "icons": [
+    {
+      "src": "launcher-icon-4x.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "density": 4.0
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone", // Run like a standalone app, not as a Chrome tab
+  "orientation": "portrait",
+  "theme_color": "blue",   // This should work, but I still need the theme-color meta tag in the HTML
+  "background_color": "red",
+  "gcm_sender_id": "0123456789" // For notification API, see below
+}</pre>
+                    <!--<p>
                         In Chrome 47 and later, a splash screen is displayed for a web application launched from a home screen. This splashscreen is auto-generated using properties in the web app manifest, specifically: name, background_color, and the icon in the icons array that is closest to 128dpi for the device.</p>
 
                     <p>
@@ -66,7 +100,9 @@
                         Defines the default theme color for an application. This sometimes affects how the application is displayed by the OS (e.g., on Android's task switcher, the theme color surrounds the application).
 
                         Should work, but for now using the theme-color meta tag as a fallback.
-                    </p>
+                    </p>-->
+
+                    <h2>Service Worker Notification API</h2>
 
                     <p style="word-break: break-all;">
                         Inspect/unregister: chrome://serviceworker-internals/
@@ -81,6 +117,8 @@
 
                         On command line:
                         curl --header "Authorization: key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"cxduDIcKfd4:APA91bHGhWaD4kcdECqMzHFXiULyn6SsORp3BMPHFZ14BrIP1mlnIZDSO4WE8QadKZnt8IsNQ7e-7fctH0okNDKh2W_blLaPoqEwTCza-j-bGUc1ZGY9dvUSRGTYPfakHkafa37dXjU6\"]}"
+
+                        For debug CURL, for server <a href="https://www.npmjs.com/package/node-gcm">node-gcm</a>
                     </p>
 
                     <div id="currentSubscriptionKey" style="border: 1px solid red; word-break: break-all;"></div>

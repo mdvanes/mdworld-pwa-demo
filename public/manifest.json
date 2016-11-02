@@ -12,7 +12,7 @@
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "aliceblue",
-  "background_color": "red",
+  "theme_color": "#247324",
+  "background_color": "#247324",
   "gcm_sender_id": "465278533306"
 }
