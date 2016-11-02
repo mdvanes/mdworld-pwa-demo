@@ -2,3 +2,7 @@
 /node_modules
 /public/js/pwa.bundle.js.map
 /public/js/pwa.bundle.js
+/public/pwa.bundle.js.map
+/public/pwa.bundle.js
+/public/sw.bundle.js.map
+/public/sw.bundle.js

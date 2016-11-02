@@ -18,7 +18,7 @@ const subscriptions = [];
 //    cert:  fs.readFileSync(__dirname + '/cert.pem')
 //};
 
-// If true, periodically send notifications of the uptime of this server with Firebase to all registered service workers
+// If true, periodically send notifications of the uptime of this server with FirebaseCM to all registered service workers
 let sendUptimeUpdates = false;
 let sendUptimeInterval = null;
 
@@ -32,9 +32,15 @@ app.get('/sendUptime', (req, res) => {
     res.send({sendUptime: true}); // TODO should be variable
 });
 
-//app.get('/debugnotify', (req, res) => {
-//    notify('testing notify');
-//});
+app.get('/debugnotify', (req, res) => {
+    notify('testing notify');
+    res.send({msg: 'notify was called'});
+});
+
+app.get('/getuptime', (req, res) => {
+    const uptime = (new Date()).getTime() - startTime;
+    res.send({uptime: uptime});
+});
 
 function startSendUptimeInterval() {
     if(sendUptimeUpdates) {
@@ -47,14 +53,25 @@ function startSendUptimeInterval() {
 function notify(msg) {
     //curl --header "Authorization: key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"e1zoTBv_GDQ:APA91bEpN-mpbdZ6eQGA7NgiAR1742RQecuJ1F3ozfbarTcElfdsK8I4iYBwjg-W7NY3w2zNUQkTT7DPUnIcvhDjegmmsLaB3cNKKdsEbGOGbK6VBmzwZFe7w2YNv_75H9U-5ng-Oau9\"]}"
     console.log(msg, subscriptions);
-    // TODO iterate over all keys!
+    // TODO iterate over all keys (test)
+
+    // TODO change the contents of the message
+    /*
+    Not so easy. The tutorial so far is for chrome < 50. In this article (https://developers.google.com/web/updates/2016/03/web-push-encryption) it says:
+
+     Prior to Chrome 50, push messages could not contain any payload data. When the 'push' event fired in your service worker,
+     all you knew was that the server was trying to tell you something, but not what it might be.
+     You then had to make a follow up request to the server and obtain the details of the notification to show, which might fail in poor network conditions.
+     */
 
     const message = new gcm.Message({
-        data: { key1: 'msg1' }
+        data: { key1: 'msg1' },
+        notification: {
+            title: 'Hello, World',
+            body: 'las;kdfjlasdkjflaskdjf'
+        }
     });
     const sender = new gcm.Sender('AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0');
-    //var regTokens = ['YOUR_REG_TOKEN_HERE'];
-
     sender.send(message, { registrationTokens: subscriptions }, (err, response) => {
         if (err) {
             console.error(err);

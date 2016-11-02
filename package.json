@@ -4,7 +4,7 @@
   "description": "Demo for Progressive Web App",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "node node_modules/webpack/bin/webpack.js --progress --colors --watch",
+    "dev": "node node_modules/webpack/bin/webpack.js --colors --watch",
     "dist": "node node_modules/webpack/bin/webpack.js"
   },
   "repository": {
