@@ -9,6 +9,7 @@
         console.error('error', data);
     });
  */
+// Alternatively use a promise library from npm like browser-request
 function get(url) {
     return new Promise( (resolve, reject) => {
         //const url = 'http://localhost:3000/uptime';

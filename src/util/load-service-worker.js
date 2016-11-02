@@ -22,21 +22,13 @@ const loadServiceWorker = () => {
                         //document.getElementById('subscribeLink').setAttribute('href', `http://localhost:3000/subscribe?key=${key}`);
                         http.get(`/subscribe?key=${key}`)
                             .then(function(data) {
-                                console.log('success', data);
+                                if(JSON.parse(data).result !== 'ok') {
+                                    throw new Error('load-service-worker.js: subscription failed');
+                                }
                             })
                             .catch(function(data) {
                                 console.error('error', data);
                             });
-                        // TODO ajax call with currentSubscriptionKey to /subscribe?key=currentSubscriptionKey
-                        // npm install browser-request
-                        //var request = require('browser-request')
-                        //request('/', function(er, res) {
-                        //    if(!er)
-                        //        return console.log('browser-request got your root path:\n' + res.body)
-                        //
-                        //    console.log('There was an error, but at least browser-request loaded and ran!')
-                        //    throw er
-                        //})
                     });
                 // TODO log this endpoint on the HTML with curl command for easier testing
                 // TODO Subscribe endpoint ids to a server and send notifications from there
