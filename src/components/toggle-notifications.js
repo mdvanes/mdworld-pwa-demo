@@ -2,17 +2,17 @@ import http from '../util/http';
 
 const toggleNotifications = {
     props: ['checked'],
-    //data: function() {
-    //    //console.log();
-    //    return null;
-    //},
+    data: function() {
+        // TODO remove "data"?
+    },
     methods: {
         sendToggle: function(event) {
             const state = this.checked || false;
             console.log('testtogglenotifications', state);
             http.get(`/sendUptime?send=${state}`)
                 .then(function(data) {
-                    console.log('success?', data);
+                    const sendUptime = JSON.parse(data).sendUptime;
+                    console.log('success?', data, 'senduptime', sendUptime);
                     //if(JSON.parse(data).result !== 'ok') {
                     //    throw new Error('load-service-worker.js: subscription failed');
                     //}

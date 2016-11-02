@@ -18,10 +18,19 @@ app.use(express.static('public'));
 
 // TODO use websockets to update the toggle on all clients?
 app.get('/sendUptime', (req, res) => {
-    console.log(`SendUptime: the server was started at ${startTime} and `, req.query.send);
-    sendUptimeUpdates = req.query.send;
-    startSendUptimeInterval(false); // TODO should be stateless!
-    res.send({sendUptime: true}); // TODO should be variable
+    console.log(`SendUptime: the server was started at ${startTime} and toggle=`, req.query.send);
+    if(req.query.send && req.query.send === 'true') {
+        sendUptimeUpdates = true;
+        startSendUptimeInterval(); // TODO should be stateless!
+    } else if(req.query.send && req.query.send === 'false') {
+        sendUptimeUpdates = false;
+        startSendUptimeInterval(); // TODO should be stateless!
+    } 
+    // else only return the state
+    //sendUptimeUpdates = req.query.send === 'true';
+    //console.log('senduptime1', sendUptimeUpdates, typeof sendUptimeUpdates, typeof req.query.send);
+    console.log('/senduptime response=', sendUptimeUpdates);
+    res.send({sendUptime: sendUptimeUpdates}); // TODO should be variable
 });
 
 app.get('/debugnotify', (req, res) => {
@@ -36,8 +45,12 @@ app.get('/getuptime', (req, res) => {
 
 function startSendUptimeInterval() {
     if(sendUptimeUpdates) {
+        console.log('sendUptimeUpdates=true new interval');
+        clearInterval(sendUptimeInterval);
+        notify(`Changed toggle. Uptime is now ${(new Date()).getTime() - startTime} ms`)
         sendUptimeInterval = setInterval(() => notify(`uptime is now ${(new Date()).getTime() - startTime} ms`), 60000)
     } else {
+        console.log('sendUptimeUpdates=false clear interval', sendUptimeInterval);
         clearInterval(sendUptimeInterval);
     }
 }
