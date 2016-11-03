@@ -1,6 +1,5 @@
 import http from '../../util/http';
-import style from '!style!css!sass!./toggle-notifications.scss';
-console.log('css', style);
+import style from '!style!css!sass!./toggle-notifications.scss'; // eslint-disable-line no-unused-vars
 
 const toggleNotifications = {
     props: ['checked'],
@@ -24,7 +23,7 @@ const toggleNotifications = {
                 });
         }
     },
-    template: // TODO style like animated toggle
+    template:
         `<span>
             <label>
                 <input class="tgl tgl-light" type="checkbox" v-model="checked" v-on:change="sendToggle">
