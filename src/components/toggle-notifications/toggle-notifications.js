@@ -1,4 +1,6 @@
-import http from '../util/http';
+import http from '../../util/http';
+import style from '!style!css!sass!./toggle-notifications.scss';
+console.log('css', style);
 
 const toggleNotifications = {
     props: ['checked'],
@@ -8,7 +10,7 @@ const toggleNotifications = {
     methods: {
         sendToggle: function(event) {
             const state = this.checked || false;
-            console.log('testtogglenotifications', state);
+            //console.log('testtogglenotifications', state);
             http.get(`/sendUptime?send=${state}`)
                 .then(function(data) {
                     const sendUptime = JSON.parse(data).sendUptime;
@@ -23,9 +25,13 @@ const toggleNotifications = {
         }
     },
     template: // TODO style like animated toggle
-        `<label>
-            <input type="checkbox"  v-model="checked" v-on:change="sendToggle"> toggle notifications {{checked}}
-        </label>`
+        `<span>
+            <label>
+                <input class="tgl tgl-light" type="checkbox" v-model="checked" v-on:change="sendToggle">
+                <span class="tgl-btn"></span>
+            </label>
+            toggle notifications {{checked}}
+        </span>`
 };
 
 export {toggleNotifications};

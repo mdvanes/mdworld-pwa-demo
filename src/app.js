@@ -2,7 +2,7 @@ import Vue from 'vue';
 import {loadServiceWorker} from './util/load-service-worker';
 import http from './util/http';
 import {experimentWarning} from './components/experiment-warning';
-import {toggleNotifications} from './components/toggle-notifications';
+import {toggleNotifications} from './components/toggle-notifications/toggle-notifications';
 
 // Register Vue components before initializing Vue App
 Vue.component('experiment-warning', experimentWarning);

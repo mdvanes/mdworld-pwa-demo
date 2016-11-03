@@ -42,6 +42,7 @@ Heroku starts by running the Procfile.
 
 # TODO
 
+* animated toggle
 * https://www.npmjs.com/package/browser-sync-webpack-plugin
 * backend service for notification API
 * debug notification on mobile
