@@ -31,7 +31,7 @@
                             </p>
                             <ul>
                                 <li><a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a></li>
-                                <li>ServiceWorker notification</li>
+                                <li><a href="#notification-api">ServiceWorker notification</a></li>
                                 <li><em>@TODO</em> ServiceWorker CacheAPI</li>
                             </ul>
                             <a class="btn btn-primary btn-sm" href="https://github.com/mdvanes/pwa-demo/" target="_blank">Sources on Github</a>
@@ -40,14 +40,16 @@
                     </div>
 
                     <p>
+                        Show notifications:
                         <toggle-notifications v-bind:checked="showNotifications"></toggle-notifications>
-                        <a href="http://localhost:3000/sendUptime?send=true">http://localhost:3000/sendUptime?send=true</a>
+                        (more info, see <a href="#notification-api">below</a>)
+                        <!--<a href="http://localhost:3000/sendUptime?send=true">http://localhost:3000/sendUptime?send=true</a>-->
                         <!--<a id="subscribeLink" href="">http://localhost:3000/subscribe?key=</a>-->
-                        <a id="debug" href="http://localhost:3000/debugnotify">debug</a>
+                        <!--<a id="debug" href="http://localhost:3000/debugnotify">debug</a>-->
                     </p>
 
-                    <p>Visit on Github: https://github.com/mdvanes/pwa-demo/</p>
-                    <p>This app runs on Heroku: https://mdworld-pwa-demo.herokuapp.com</p>
+                    <!--<p>Visit on Github: https://github.com/mdvanes/pwa-demo/</p>-->
+                    <!--<p>This app runs on Heroku: https://mdworld-pwa-demo.herokuapp.com</p>-->
 
                     <h2>Homescreen</h2>
                     <p>
@@ -103,7 +105,7 @@
                         Should work, but for now using the theme-color meta tag as a fallback.
                     </p>-->
 
-                    <h2>Service Worker Notification API</h2>
+                    <h2 id="notification-api">Service Worker Notification API</h2>
 
                     <p style="word-break: break-all;">
                         Inspect/unregister: chrome://serviceworker-internals/<br/>

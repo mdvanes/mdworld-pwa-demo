@@ -29,7 +29,7 @@ const toggleNotifications = {
                 <input class="tgl tgl-light" type="checkbox" v-model="checked" v-on:change="sendToggle">
                 <span class="tgl-btn"></span>
             </label>
-            toggle notifications {{checked}}
+            <!--toggle notifications {{checked}}-->
         </span>`
 };
 
