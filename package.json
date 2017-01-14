@@ -6,7 +6,9 @@
     "start": "node server/index.js",
     "dev": "node node_modules/webpack/bin/webpack.js --colors --watch",
     "devserver": "concurrently --kill-others \"npm run dev\" \"npm run start\"",
-    "dist": "node node_modules/webpack/bin/webpack.js"
+    "dist": "node node_modules/webpack/bin/webpack.js",
+    "lint": "esw webpack.config.* src --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,7 @@
     "css-loader": "^0.25.0",
     "eslint": "^3.8.1",
     "eslint-loader": "^1.6.0",
+    "eslint-watch": "^2.1.14",
     "node-sass": "^3.11.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",

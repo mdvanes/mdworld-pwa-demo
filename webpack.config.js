@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-env node */
 var path = require('path');
 var webpack = require('webpack');
 
