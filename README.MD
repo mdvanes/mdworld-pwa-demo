@@ -38,12 +38,11 @@ help to unregister the service worker.
 
 # TODO
 
+* TODO ServiceWorker CacheAPI
 * Replace bootstrap by Wing http://usewing.ml/
-* DONE animated toggle
+* refactor src\serviceworker.js
 * https://www.npmjs.com/package/browser-sync-webpack-plugin
 * backend service for notification API
 * debug notification on mobile
-* TODO ServiceWorker CacheAPI
-* Revise documentation on index.html
 * webpack: uglify gives warnings
 * es6 build target instead of es5 (or is this default?)

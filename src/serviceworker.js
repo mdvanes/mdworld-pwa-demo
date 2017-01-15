@@ -11,32 +11,26 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('push', function (event) {
     console.log('Push message received', event);
-
-    var title = 'Push message';
-
-    //https://developer.mozilla.org/en-US/docs/Web/API/Push_API/Using_the_Push_API
-
     /*
      Changing this message by reading event.data.json() is apparently not very straightforward, see https://developers.google.com/web/updates/2016/03/web-push-encryption
      The older style would be to do a server call to retrieve the required information.
+     //https://developer.mozilla.org/en-US/docs/Web/API/Push_API/Using_the_Push_API
      */
-
-    // TODO call server to get uptime (promise library needed)
 
     // XMLHttpRequest not available in Service Worker, use Fetch API
     fetch('getuptime', {
         method: 'GET'/*,
          body: 'form'*/
-    }).then(function(response) {
+    })
+        .then(function(response) {
             if(response.ok) {
-                //console.log('ok1:', response);
-                //console.log('ok2:', response.json());
                 return response.json();
             } else {
                 console.log('Network response was not ok.', response);
             }
         })
         .then(function(json) {
+            const title = 'Push message';
             const uptimeSec = Math.round(json.uptime / 1000);
             //console.log('found uptime:', uptimeSec);
 
@@ -50,12 +44,4 @@ self.addEventListener('push', function (event) {
         .catch(function(error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
         });
-
-    //event.waitUntil(
-    //    self.registration.showNotification(title, {
-    //        body: 'The uptime is ... (see serviceworker.js)',
-    //        icon: 'launcher-icon-4x.png',
-    //        tag: 'my-tag'
-    //    }));
 });
-//console.log('Im a serviceworker');
