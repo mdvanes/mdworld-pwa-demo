@@ -1,48 +1,45 @@
-# The goal of this demo
+# Progressive Web App Demo
 
-Source on Github: https://github.com/mdvanes/pwa-demo/
-Visit the running web app at https://mdworld-pwa-demo.herokuapp.com
+A showcase for Progressive Web Apps by using:
 
-A showcase for Homescreen, Service Worker Notifications, Service Worker Cache API.
+* Homescreen
+* Service Worker Notifications
+* Service Worker Cache API.
+
 This should work on Chrome and Chrome Mobile.
 
-Homescreen can be tested by...
-Notifications can be tested by...
-CacheAPI can be tested by...
+For more details see the public/index.html or visit the running web app at https://mdworld-pwa-demo.herokuapp.com
 
 
-# Server
+# Usage
 
-https is supposed to be required for notification/service worker, but it seems to work without.
-
-Tried for the moment only use http-server with `http-server -S -C cert.pem -p 3443` to run https.
-Create certificates with `openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem`
-But Heroku doesn't support SSL on free dynos, nor HTTP/2.
-
-Now trying simple Express http server instead. Deploy to Heroku works now, but gives the error that a secure origin is required: https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features It seems that it only worked because it was on localhost.
-
-Alternatives are nodejitsu (1 free open source, outdated??), redhat openshift (3 free).
-Probably self hosting is better, but it is not possible to use DevOps in that case. I can use http/2 in that case: https://webapplog.com/http2-node/
-
-Update: Interestingly enough, when deploying an HTTP server on Heroku, apparently it's automatically also accessible over https: https://mdworld-pwa-demo.herokuapp.com/
+* Run development server and watch ```npm run devserver``` and open http://localhost:3000/ (Service workers 
+requires HTTPS, but an exception is made for localhost)
+* Build for production ```npm run dist```
+* Run production server ```npm start```
 
 
 # DevOps
 
-Travis-ci depends on the .travis.yml. It has an API key for heroku. It was not possible to generate it under Windows, but it worked on the first try on Ubuntu.
+Travis-ci depends on the .travis.yml. It has an API key for heroku. It was not possible to generate it under Windows, 
+but it worked on the first try on Ubuntu.
 
-Heroku starts by running the Procfile.
+Heroku starts by running the Procfile. When deploying an HTTP server on Heroku, apparently it's automatically also 
+accessible over https: https://mdworld-pwa-demo.herokuapp.com/
 
 
-# Commands
+# Debugging
 
-* Start server: npm start
-* Prod build: npm run prod-build
+* Inspect/unregister service workers: chrome://serviceworker-internals/ Sometimes, when updates are not shown it will
+help to unregister the service worker.
+* Information about Push Notifications: https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
+* Cloud messaging console (source of the API webkey): https://console.firebase.google.com/project/my-homescreen-push-test/settings/general/
 
 
 # TODO
 
-* animated toggle
+* Replace bootstrap by Wing http://usewing.ml/
+* DONE animated toggle
 * https://www.npmjs.com/package/browser-sync-webpack-plugin
 * backend service for notification API
 * debug notification on mobile

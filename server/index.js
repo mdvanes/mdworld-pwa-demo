@@ -47,7 +47,7 @@ function startSendUptimeInterval() {
     if(sendUptimeUpdates) {
         console.log('sendUptimeUpdates=true new interval');
         clearInterval(sendUptimeInterval);
-        notify(`Changed toggle. Uptime is now ${(new Date()).getTime() - startTime} ms`)
+        notify(`Changed toggle. Uptime is now ${(new Date()).getTime() - startTime} ms`);
         sendUptimeInterval = setInterval(() => notify(`uptime is now ${(new Date()).getTime() - startTime} ms`), 60000)
     } else {
         console.log('sendUptimeUpdates=false clear interval', sendUptimeInterval);
