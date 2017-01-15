@@ -34,6 +34,7 @@ accessible over https: https://mdworld-pwa-demo.herokuapp.com/
 help to unregister the service worker.
 * Information about Push Notifications: https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/
 * Cloud messaging console (source of the API webkey): https://console.firebase.google.com/project/my-homescreen-push-test/settings/general/
+* Service Worker offline information: https://mobiforge.com/design-development/taking-web-offline-service-workers, https://jakearchibald.com/2014/offline-cookbook/, https://www.udacity.com/course/offline-web-applications--ud899
 
 
 # TODO

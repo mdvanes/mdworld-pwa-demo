@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import installNotificationSw from './util/sw-notification-installer';
 import {loadServiceWorker} from './util/load-service-worker';
 import http from './util/http';
 import {experimentWarning} from './components/experiment-warning/experiment-warning';
@@ -28,4 +29,4 @@ http.get('/sendUptime')
         console.error('error', data);
     });
 
-loadServiceWorker();
+loadServiceWorker('sw-notification.bundle.js', installNotificationSw);
