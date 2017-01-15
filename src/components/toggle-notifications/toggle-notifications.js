@@ -13,7 +13,7 @@ const toggleNotifications = {
             http.get(`/sendUptime?send=${state}`)
                 .then(function(data) {
                     const sendUptime = JSON.parse(data).sendUptime;
-                    console.log('success?', data, 'senduptime', sendUptime);
+                    console.log('toggle-notifications: success?', data, 'senduptime', sendUptime);
                     //if(JSON.parse(data).result !== 'ok') {
                     //    throw new Error('load-service-worker.js: subscription failed');
                     //}

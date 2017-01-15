@@ -29,4 +29,5 @@ http.get('/sendUptime')
         console.error('error', data);
     });
 
+//loadServiceWorker('sw-cache.bundle.js', () => console.log('successfully loaded sw-cache'));
 loadServiceWorker('sw-notification.bundle.js', installNotificationSw);
