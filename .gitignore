@@ -6,3 +6,7 @@
 /public/pwa.bundle.js
 /public/sw.bundle.js.map
 /public/sw.bundle.js
+/public/sw-notification.bundle.js.map
+/public/sw-cache.bundle.js
+/public/sw-cache.bundle.js.map
+/public/sw-notification.bundle.js
