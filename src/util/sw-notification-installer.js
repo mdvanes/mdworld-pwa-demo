@@ -6,7 +6,7 @@ export default function installNotificationSw(reg) {
             const key = sub.endpoint.substring(sub.endpoint.lastIndexOf('/') + 1);
             const curlCommand = `curl --header "Authorization: key=AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\\"registration_ids\\":[\\"${key}\\"]}"`;
             console.log('Subscription on PushManager:', sub);
-            console.log('Key of this registered servicworker:', key);
+            console.log('Key of this registered Service Worker:', key);
             console.log(`For debugging use this CURL command: ${curlCommand}`);
 
             // Register the notification subscription key to the server
