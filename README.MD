@@ -8,7 +8,7 @@ A showcase for Progressive Web Apps by using:
 
 This should work on Chrome and Chrome Mobile.
 
-For more details see the public/index.html or visit the running web app at https://mdworld-pwa-demo.herokuapp.com
+For more details see public/index.html or visit the running web app at https://mdworld-pwa-demo.herokuapp.com
 
 
 # Usage
