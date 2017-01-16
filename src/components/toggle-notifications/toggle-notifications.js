@@ -3,16 +3,12 @@ import style from '!style!css!sass!./toggle-notifications.scss'; // eslint-disab
 
 const toggleNotifications = {
     props: ['checked'],
-    //data: function() {
-    //    // TODO remove "data"?
-    //},
     methods: {
         sendToggle: function(event) {
             const state = this.checked || false;
-            //console.log('testtogglenotifications', state);
             http.get(`/sendUptime?send=${state}`)
                 .then(data => {
-                    const sendUptime = JSON.parse(data).sendUptime;
+                    //const sendUptime = JSON.parse(data).sendUptime;
                     //console.log('toggle-notifications: success?', data, 'senduptime', sendUptime);
                     if(JSON.parse(data).offline) {
                         this.checked = false;
