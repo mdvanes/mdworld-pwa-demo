@@ -3,23 +3,24 @@ import style from '!style!css!sass!./toggle-notifications.scss'; // eslint-disab
 
 const toggleNotifications = {
     props: ['checked'],
-    data: function() {
-        // TODO remove "data"?
-    },
+    //data: function() {
+    //    // TODO remove "data"?
+    //},
     methods: {
         sendToggle: function(event) {
             const state = this.checked || false;
             //console.log('testtogglenotifications', state);
             http.get(`/sendUptime?send=${state}`)
-                .then(function(data) {
+                .then(data => {
                     const sendUptime = JSON.parse(data).sendUptime;
-                    console.log('toggle-notifications: success?', data, 'senduptime', sendUptime);
-                    //if(JSON.parse(data).result !== 'ok') {
-                    //    throw new Error('load-service-worker.js: subscription failed');
-                    //}
+                    //console.log('toggle-notifications: success?', data, 'senduptime', sendUptime);
+                    if(JSON.parse(data).offline) {
+                        this.checked = false;
+                        alert('It appears there is no internet connection at the moment. Please, try again after reconnecting.');
+                    }
                 })
-                .catch(function(data) {
-                    console.error('error', data);
+                .catch(err => {
+                    console.error('Can\'t send uptime', err);
                 });
         }
     },
