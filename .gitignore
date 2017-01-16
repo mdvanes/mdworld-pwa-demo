@@ -10,3 +10,5 @@
 /public/sw-cache.bundle.js
 /public/sw-cache.bundle.js.map
 /public/sw-notification.bundle.js
+/public/serviceworker.bundle.js.map
+/public/serviceworker.bundle.js

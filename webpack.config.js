@@ -7,8 +7,7 @@ var common = {
 
     entry: {
         pwa: './src/app.js',
-        'sw-notification': './src/serviceworker-notification.js',
-        'sw-cache': './src/serviceworker-cache.js'
+        serviceworker: './src/serviceworker/serviceworker.js'
     },
 
     resolve: {

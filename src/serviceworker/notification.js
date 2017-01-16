@@ -1,16 +1,5 @@
-console.log('Notification SW: Started', self);
-
-self.addEventListener('install', function (event) {
-    self.skipWaiting();
-    console.log('Notification SW: Installed', event);
-});
-
-self.addEventListener('activate', function (event) {
-    console.log('Notification SW: Activated', event);
-});
-
-self.addEventListener('push', function (event) {
-    console.log('Notification SW: Push message received', event);
+export function push(event) {
+    console.log('%csw/notification:', 'color: #7733b7; font-weight: bold', 'Push message received', event);
     /*
      Changing this message by reading event.data.json() is apparently not very straightforward, see https://developers.google.com/web/updates/2016/03/web-push-encryption
      The older style would be to do a server call to retrieve the required information.
@@ -26,7 +15,7 @@ self.addEventListener('push', function (event) {
             if(response.ok) {
                 return response.json();
             } else {
-                console.warn('Notification SW: Network response was not ok.', response);
+                console.warn('%csw/notification:', 'color: #7733b7; font-weight: bold', 'Network response was not ok.', response);
             }
         })
         .then(function(json) {
@@ -42,6 +31,6 @@ self.addEventListener('push', function (event) {
                 }));
         })
         .catch(function(error) {
-            console.warn('Notification SW: There has been a problem with your fetch operation: ' + error.message);
+            console.warn('%csw/notification:', 'color: #7733b7; font-weight: bold', 'There has been a problem with your fetch operation: ' + error.message);
         });
-});
+};

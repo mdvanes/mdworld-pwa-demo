@@ -29,5 +29,11 @@ http.get('/sendUptime')
         console.error('error', data);
     });
 
+// Only one SW per scope (http://stackoverflow.com/questions/36000127/can-i-have-multiple-service-workers-both-intercept-the-same-fetch-request)
+// so differ scopes or merge into one SW https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register
 //loadServiceWorker('sw-cache.bundle.js', () => console.log('successfully loaded sw-cache'));
-loadServiceWorker('sw-notification.bundle.js', installNotificationSw);
+loadServiceWorker('serviceworker.bundle.js', (reg) => {
+    console.log('successfully loaded sw-cache');
+    installNotificationSw(reg);
+});
+//console.log(installNotificationSw);
