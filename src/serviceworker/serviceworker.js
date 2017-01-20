@@ -4,7 +4,7 @@ import * as notification from './notification.js';
 console.log('SW: Started', self);
 
 self.addEventListener('install', function (event) {
-    cache.setInstall(caches);
+    cache.setInstall(event, caches);
     self.skipWaiting();
     console.log('SW: Installed', event);
 });

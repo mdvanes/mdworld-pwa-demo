@@ -41,6 +41,7 @@ help to unregister the service worker.
 
 * TODO ServiceWorker CacheAPI
 * Replace bootstrap by Wing http://usewing.ml/
+* refactor backend
 * refactor src\serviceworker.js
 * https://www.npmjs.com/package/browser-sync-webpack-plugin
 * backend service for notification API
