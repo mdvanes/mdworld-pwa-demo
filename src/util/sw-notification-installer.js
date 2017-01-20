@@ -13,7 +13,7 @@ export default function installNotificationSw(reg) {
             http.get(`/subscribe?key=${key}`)
                 .then(data => {
                     if(JSON.parse(data).result === 'offline') {
-                        console.log('No internet connection, should try to resubscribe when the connection is online.');
+                        console.warn('No internet connection, should try to resubscribe when the connection is online.');
                     } else if(JSON.parse(data).result !== 'ok') {
                         throw new Error('load-service-worker.js: subscription failed');
                     }

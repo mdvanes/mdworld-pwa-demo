@@ -17,30 +17,16 @@ export function setInstall(event, caches) {
 }
 
 function createOfflineServiceResponse(responseObj) {
-    //const response = {'sendUptime': false, 'offline': true};
     const responseBlob = new Blob([JSON.stringify(responseObj)], {type: 'application/json'});
     const responseInit = {'status': 200, 'statusText': 'ok'};
     return new Response(responseBlob, responseInit);
 }
 
 export function setFetch(event) {
-    // Parse the URL:
+    // Parse the URL
     const requestURL = new URL(event.request.url);
     console.log('%csw/cache:', 'color: green; font-weight: bold', 'Fetch event', requestURL.pathname, requestURL.href);
 
-    //event.respondWith(caches
-    //    .match(event.request)
-    //    .then(response => response || fetch(event.request))
-    //);
-
-    // Handle requests to a particular host specifically
-    //if(requestURL.pathname === '/index.html') {
-    //    console.log('%csw/cache:', 'color: green; font-weight: bold', 'Intercepted index.html');
-    //    event.respondWith(caches
-    //        .match(event.request)
-    //        .then(response => response || fetch(event.request))
-    //    );
-    //} else
     if (requestURL.pathname === '/sendUptime') {
         console.log('%csw/cache:', 'color: green; font-weight: bold', 'Intercepted sendUptime');
         // Network, falling back to custom response
