@@ -39,7 +39,7 @@ function startSendUptimeInterval(subscriptions, startTime, sendUptimeUpdates) {
             notify(intervalMsg, subscriptions)
         }, 60000);
     } else {
-        console.log('sendUptimeUpdates=false clear interval', sendUptimeInterval);
+        console.log('sendUptimeUpdates=false. clear interval=', typeof sendUptimeInterval);
         clearInterval(sendUptimeInterval);
     }
 }
