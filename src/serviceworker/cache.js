@@ -1,10 +1,12 @@
 export function setInstall(event, caches) {
     const resources = [
+        '/favicon.ico',
         '/index.html',
+        '/launcher-icon-4x.png',
         '/manifest.json',
-        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
         '/pwa.bundle.js',
-        '/serviceworker.bundle.js'
+        '/serviceworker.bundle.js',
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
     ];
 
     // https://jakearchibald.com/2014/offline-cookbook/
