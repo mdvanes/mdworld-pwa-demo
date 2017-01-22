@@ -4,6 +4,8 @@ import {loadServiceWorker} from './util/load-service-worker';
 import http from './util/http';
 import {experimentWarning} from './components/experiment-warning/experiment-warning';
 import {toggleNotifications} from './components/toggle-notifications/toggle-notifications';
+import styleMain from '!style!css!sass!../node_modules/wingcss/dist/wing.min.css'; // eslint-disable-line no-unused-vars
+import styleOverrides from '!style!css!sass!./app.scss'; // eslint-disable-line no-unused-vars
 
 // Register Vue components before initializing Vue App
 Vue.component('experiment-warning', experimentWarning);

@@ -1,3 +1,5 @@
+import style from '!style!css!sass!./experiment-warning.scss'; // eslint-disable-line no-unused-vars
+
 const experimentWarning = {
     props: ['msg'],
     data: function() {

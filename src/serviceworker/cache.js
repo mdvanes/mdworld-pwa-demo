@@ -1,3 +1,5 @@
+const appVersion = 'pwa-demo-v4';
+
 export function setInstall(event, caches) {
     const resources = [
         '/favicon.ico',
@@ -5,15 +7,14 @@ export function setInstall(event, caches) {
         '/launcher-icon-4x.png',
         '/manifest.json',
         '/pwa.bundle.js',
-        '/serviceworker.bundle.js',
-        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        '/serviceworker.bundle.js'
     ];
 
     // https://jakearchibald.com/2014/offline-cookbook/
     // https://mobiforge.com/design-development/taking-web-offline-service-workers
     event.waitUntil(
         caches
-            .open('pwa-demo-v2')
+            .open(appVersion)
             .then(cache => cache.addAll(resources))
     );
 }
@@ -57,7 +58,7 @@ export function setFetch(event) {
             .catch(() => fetch(event.request))
             .then(response => {
                 caches
-                    .open('pwa-demo-v1')
+                    .open(appVersion)
                     .then(cache => {
                         cache.put(event.request, response);
                     });
