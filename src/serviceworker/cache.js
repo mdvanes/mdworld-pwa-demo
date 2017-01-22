@@ -1,8 +1,8 @@
 export function setInstall(event, caches) {
     const resources = [
-        //'/favicon.ico',
+        '/favicon.ico',
         '/index.html',
-        //'/launcher-icon-4x.png',
+        '/launcher-icon-4x.png',
         '/manifest.json',
         '/pwa.bundle.js',
         '/serviceworker.bundle.js',
@@ -13,7 +13,7 @@ export function setInstall(event, caches) {
     // https://mobiforge.com/design-development/taking-web-offline-service-workers
     event.waitUntil(
         caches
-            .open('pwa-demo-v1')
+            .open('pwa-demo-v2')
             .then(cache => cache.addAll(resources))
     );
 }
