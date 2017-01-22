@@ -7,7 +7,9 @@ export function setInstall(event, caches) {
         '/launcher-icon-4x.png',
         '/manifest.json',
         '/pwa.bundle.js',
-        '/serviceworker.bundle.js'
+        '/serviceworker.bundle.js',
+        'https://fonts.gstatic.com/s/quicksand/v5/sKd0EMYPAh5PYCRKSryvW6CWcynf_cDxXwCLxiixG1c.ttf',
+        'https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf'
     ];
 
     // https://jakearchibald.com/2014/offline-cookbook/
