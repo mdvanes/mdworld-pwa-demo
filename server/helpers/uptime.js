@@ -2,10 +2,7 @@
 /* eslint-env node */
 
 const gcm = require('node-gcm');
-//const subscriptions = [];
 
-// If true, periodically send notifications of the uptime of this server with FirebaseCM to all registered service workers
-//let sendUptimeUpdates = false;
 let sendUptimeInterval = null;
 
 function notify(msg, subscriptions) {
@@ -20,13 +17,7 @@ function notify(msg, subscriptions) {
      all you knew was that the server was trying to tell you something, but not what it might be.
      You then had to make a follow up request to the server and obtain the details of the notification to show, which might fail in poor network conditions.
      */
-    const message = new gcm.Message({
-        //data: { key1: 'msg1' },
-        //notification: {
-        //    title: 'Hello, World',
-        //    body: 'las;kdfjlasdkjflaskdjf'
-        //}
-    });
+    const message = new gcm.Message({});
     const sender = new gcm.Sender('AIzaSyDLNHW-P0lk4yaVSTlVnYakexdW-fsAeC0');
     sender.send(message, { registrationTokens: subscriptions }, (err, response) => {
         if (err) {
