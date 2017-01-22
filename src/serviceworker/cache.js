@@ -1,8 +1,8 @@
 export function setInstall(event, caches) {
     const resources = [
-        '/favicon.ico',
+        //'/favicon.ico',
         '/index.html',
-        '/launcher-icon-4x.png',
+        //'/launcher-icon-4x.png',
         '/manifest.json',
         '/pwa.bundle.js',
         '/serviceworker.bundle.js',
