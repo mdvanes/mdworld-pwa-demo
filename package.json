@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "node node_modules/webpack/bin/webpack.js --colors --watch",
-    "devserver": "concurrently --kill-others \"npm run dev\" \"npm run start\"",
+    "devserver": "npm run lint && concurrently --kill-others \"npm run dev\" \"npm run start\"",
     "dist": "node node_modules/webpack/bin/webpack.js",
-    "lint": "esw webpack.config.* src --color",
+    "lint": "esw webpack.config.* src server --color",
     "lint:watch": "npm run lint -- --watch"
   },
   "repository": {
