@@ -32,9 +32,10 @@ var common = {
             files: ['src/**/*.scss']
         }),
         new webpack.optimize.UglifyJsPlugin({
-            exclude: [
-                /node_modules/
-            ]
+            // Not possible yet to suppress warnings about node_modules: https://github.com/webpack/webpack/issues/1496
+            compress: {
+                warnings: false
+            }
         })
     ],
 
