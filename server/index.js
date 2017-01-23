@@ -5,7 +5,7 @@ const express = require('express');
 const http = require('http');
 const subscribe = require('./controllers/subscribe');
 const getuptime = require('./controllers/getuptime');
-const setuptime = require('./controllers/setuptime');
+const senduptime = require('./controllers/senduptime');
 const uptime = require('./helpers/uptime');
 
 const app = express();
@@ -18,7 +18,7 @@ let sendUptimeUpdates = false;
 
 app.use(express.static('public'));
 
-setuptime.register(app, startTime, subscriptions, sendUptimeUpdates);
+senduptime.register(app, startTime, subscriptions, sendUptimeUpdates);
 getuptime.register(app, startTime);
 subscribe.register(app, subscriptions);
 
