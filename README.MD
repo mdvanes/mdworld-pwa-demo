@@ -40,7 +40,6 @@ help to unregister the service worker.
 # TODO
 
 * Webpack: uglify gives warnings
-* Stylelint
 * Fix server side routing (usecase: http://localhost:3000/swnotification, then F5)
 * Look at Web Push: https://www.npmjs.com/package/web-push
 
