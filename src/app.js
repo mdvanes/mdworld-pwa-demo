@@ -5,9 +5,9 @@ import {loadServiceWorker} from './util/load-service-worker';
 
 import {experimentWarning} from './components/experiment-warning/experiment-warning';
 import {toggleNotifications} from './components/toggle-notifications/toggle-notifications';
-import {homescreen} from './components/homescreen/homescreen';
+import homescreen from './components/homescreen/homescreen';
 import swNotification from './components/sw-notification/sw-notification';
-import {swCache} from './components/sw-cache/sw-cache';
+import swCache from './components/sw-cache/sw-cache';
 
 import styleMain from '!style!css!sass!../node_modules/wingcss/dist/wing.min.css'; // eslint-disable-line no-unused-vars
 import styleOverrides from '!style!css!sass!./app.scss'; // eslint-disable-line no-unused-vars

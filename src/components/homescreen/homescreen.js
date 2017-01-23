@@ -1,4 +1,4 @@
-const homescreen = {
+export default {
     template:
         `<article v-once>
             <h2 id="homescreen">Homescreen</h2>
@@ -36,5 +36,3 @@ const homescreen = {
 }</pre>
         </article>`
 };
-
-export {homescreen};

@@ -1,4 +1,4 @@
-const swCache = {
+export default {
     template:
         `<article v-once>
             <h2 id="cache-api">Service Worker Cache API</h2>
@@ -14,5 +14,3 @@ const swCache = {
             </p>
         </article>`
 };
-
-export {swCache};
