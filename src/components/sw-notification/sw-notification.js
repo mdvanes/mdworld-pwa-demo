@@ -1,4 +1,5 @@
 import http from '../../util/http';
+import style from '!style!css!sass!./sw-notification.scss'; // eslint-disable-line no-unused-vars
 
 export default {
     data() {
@@ -40,7 +41,7 @@ export default {
             </p>
             <p>
                 Show notifications:
-                <div v-if="loading">Loading...</div>
+                <div v-if="loading" class="loading" title="Loading..."></div>
                 <toggle-notifications v-if="!loading" v-bind:checked="showNotifications"></toggle-notifications>
             </p>
         </article>`
