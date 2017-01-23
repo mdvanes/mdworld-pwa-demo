@@ -39,11 +39,10 @@ help to unregister the service worker.
 
 # TODO
 
-* Refactor backend
-* Replace bootstrap by Wing http://usewing.ml/
-* refactor src\serviceworker.js
-* webpack: uglify gives warnings
-* es6 build target instead of es5 (or is this default?)
+* Webpack: uglify gives warnings
+* Stylelint
+* Fix server side routing (usecase: http://localhost:3000/swnotification, then F5)
+* Look at Web Push: https://www.npmjs.com/package/web-push
 
 
 # Outscoped improvements

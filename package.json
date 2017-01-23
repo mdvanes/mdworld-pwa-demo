@@ -1,6 +1,6 @@
 {
   "name": "mdworld-pwa-demo",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Demo for Progressive Web App",
   "scripts": {
     "start": "node server/index.js",

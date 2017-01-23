@@ -1,4 +1,4 @@
-const appVersion = 'pwa-demo-v4';
+const appVersion = 'pwa-demo-v1.5.0';
 
 export function setInstall(event, caches) {
     const resources = [
