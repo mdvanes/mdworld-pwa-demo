@@ -3,8 +3,8 @@ import VueRouter from 'vue-router';
 import installNotificationSw from './util/sw-notification-installer';
 import {loadServiceWorker} from './util/load-service-worker';
 
-import {experimentWarning} from './components/experiment-warning/experiment-warning';
-import {toggleNotifications} from './components/toggle-notifications/toggle-notifications';
+import experimentWarning from './components/experiment-warning/experiment-warning';
+import toggleNotifications from './components/toggle-notifications/toggle-notifications';
 import homescreen from './components/homescreen/homescreen';
 import swNotification from './components/sw-notification/sw-notification';
 import swCache from './components/sw-cache/sw-cache';

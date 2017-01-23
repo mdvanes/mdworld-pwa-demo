@@ -1,8 +1,8 @@
 import style from '!style!css!sass!./experiment-warning.scss'; // eslint-disable-line no-unused-vars
 
-const experimentWarning = {
+export default {
     props: ['msg'],
-    data: function() {
+    data() {
         return {isChrome: navigator.appVersion && navigator.appVersion.indexOf('Chrome/') > -1};
     },
     template:
@@ -13,5 +13,3 @@ const experimentWarning = {
             </div>
         </div>`
 };
-
-export {experimentWarning};

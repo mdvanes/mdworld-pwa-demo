@@ -1,7 +1,7 @@
 import http from '../../util/http';
 import style from '!style!css!sass!./toggle-notifications.scss'; // eslint-disable-line no-unused-vars
 
-const toggleNotifications = {
+export default {
     props: ['checked'],
     methods: {
         sendToggle: function(event) {
@@ -29,5 +29,3 @@ const toggleNotifications = {
             <!--toggle notifications {{checked}}-->
         </span>`
 };
-
-export {toggleNotifications};
