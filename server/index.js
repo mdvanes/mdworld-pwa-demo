@@ -22,6 +22,16 @@ setuptime.register(app, startTime, subscriptions, sendUptimeUpdates);
 getuptime.register(app, startTime);
 subscribe.register(app, subscriptions);
 
+app.get('/', (req, res) => {
+    res.redirect('/homescreen');
+});
+
+app.get('*', (req, res) => {
+    // Workaround not to need SPA routing middleware https://www.npmjs.com/package/express-spa-router
+    res.redirect('/#' + req.originalUrl);
+    //res.sendStatus('404');
+});
+
 // HTTP (only works on localhost, on production a reverse proxy facing HTTPS is used)
 http.createServer(app).listen(port, () => {
         console.log(`mdworld-pwa-demo listening at http://localhost:${port} since ${getuptime.startTime}`);

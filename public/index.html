@@ -24,16 +24,25 @@
                                 is to make Web Apps behave more like Hybrid/Native Apps. The explored specs include:
                             </p>
                             <ul>
-                                <li><a href="#homescreen">Homescreen</a></li>
-                                <li><a href="#notification-api">Service Worker Notifications</a></li>
-                                <li><a href="#notification-api">Service Worker Cache API</a></li>
+                                <li><router-link to="/homescreen">Homescreen</router-link></li>
+                                <li><router-link to="/swnotification">Service Worker Notifications</router-link></li>
+                                <li><router-link to="/swcache">Service Worker Cache API</router-link></li>
                             </ul>
-                            <a class="btn btn-primary" href="https://github.com/mdvanes/pwa-demo/" target="_blank">Sources on Github</a>
-                            <a class="btn btn-primary" href="https://mdworld-pwa-demo.herokuapp.com" target="_blank">Run on Heroku</a>
+
+                            <p>
+                                [uses Vue and Wing CSS]
+                            </p>
+
+                            <p>
+                                <a class="btn btn-primary" href="https://github.com/mdvanes/pwa-demo/" target="_blank">Sources on Github</a>
+                                <a class="btn btn-primary" href="https://mdworld-pwa-demo.herokuapp.com" target="_blank">Run on Heroku</a>
+                            </p>
                         </div>
                     </div>
 
-                    <h2 id="homescreen">Homescreen</h2>
+                    <router-view></router-view>
+
+                    <!--<h2 id="homescreen">Homescreen</h2>
                     <p>
                         Following the <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a> spec, it's possible to install this site like an app to the Homescreen of an Android device.
                         To install:
@@ -65,9 +74,9 @@
   "theme_color": "blue",        // This should work, but I still need the theme-color meta tag in the HTML
   "background_color": "red",
   "gcm_sender_id": "0123456789" // For notification API, see below
-}</pre>
+}</pre>-->
 
-                    <h2 id="notification-api">Service Worker Notification API</h2>
+                    <!--<h2 id="notification-api">Service Worker Notification API</h2>
 
                     <p>
                         Serviceworker Notifications do not work just like an <code>alert()</code> that happens to render
@@ -84,9 +93,9 @@
                     <p>
                         Show notifications:
                         <toggle-notifications v-bind:checked="showNotifications"></toggle-notifications>
-                    </p>
+                    </p>-->
 
-                    <h2 id="cache-api">Service Worker Cache API</h2>
+                    <!--<h2 id="cache-api">Service Worker Cache API</h2>
 
                     <p>
                         The Cache API should give an offline experience, like a native/hybrid app. Even when an App requires
@@ -97,7 +106,7 @@
                         To test this, toggle offline mode in the browser console (or disable the network connection in a
                         different way) and reload the application.<br/>
                         Also note that the toggle for "show notifications" behaves differently when the device is offline.
-                    </p>
+                    </p>-->
                 </div>
             </div>
         </div>

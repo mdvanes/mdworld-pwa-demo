@@ -1,3 +1,7 @@
 .btn {
     display: inline-block;
 }
+
+.router-link-active::after {
+    content: ' <';
+}
