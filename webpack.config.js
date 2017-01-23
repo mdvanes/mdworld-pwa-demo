@@ -2,6 +2,7 @@
 /* eslint-env node */
 var path = require('path');
 var webpack = require('webpack');
+var StyleLintPlugin = require('stylelint-webpack-plugin');
 
 var common = {
 
@@ -26,6 +27,10 @@ var common = {
 
     // Add minification
     plugins: [
+        new StyleLintPlugin({
+            configFile: '.stylelintrc',
+            files: ['src/**/*.scss']
+        }),
         new webpack.optimize.UglifyJsPlugin({
             exclude: [
                 /node_modules/
