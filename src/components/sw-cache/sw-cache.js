@@ -1,6 +1,6 @@
 const swCache = {
     template:
-        `<article>
+        `<article v-once>
             <h2 id="cache-api">Service Worker Cache API</h2>
             <p>
                 The Cache API should give an offline experience, like a native/hybrid app. Even when an App requires

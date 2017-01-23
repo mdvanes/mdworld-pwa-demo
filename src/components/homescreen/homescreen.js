@@ -1,6 +1,6 @@
 const homescreen = {
     template:
-        `<article>
+        `<article v-once>
             <h2 id="homescreen">Homescreen</h2>
             <p>
                 Following the <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Homescreen</a> spec, it's possible to install this site like an app to the Homescreen of an Android device.

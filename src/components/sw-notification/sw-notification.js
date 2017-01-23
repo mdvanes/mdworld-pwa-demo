@@ -1,19 +1,27 @@
-// TODO use this async function in the data function?
-//http.get('/sendUptime')
-//    .then(function(data) {
-//        const sendUptime = JSON.parse(data).sendUptime;
-//        //console.log('vue app.js init', sendUptime);
-//        vm.showNotifications = sendUptime;
-//    })
-//    .catch(function(data) {
-//        console.error('error', data);
-//    });
+import http from '../../util/http';
 
-const swNotification = {
-    data: function() {
+export default {
+    data() {
         return {
-            showNotifications: false // TODO should not reset upon navigation. Use props?
+            loading: false,
+            showNotifications: false
         };
+    },
+    created() {
+        this.getUptimeStatus();
+    },
+    watch: {
+        '$route': 'getUptimeStatus'
+    },
+    methods: {
+        getUptimeStatus() {
+            this.loading = true;
+            http.get('/sendUptime')
+                .then(data => {
+                    this.showNotifications = JSON.parse(data).sendUptime;
+                    this.loading = false;
+                });
+        }
     },
     template:
         `<article>
@@ -32,9 +40,8 @@ const swNotification = {
             </p>
             <p>
                 Show notifications:
-                <toggle-notifications v-bind:checked="showNotifications"></toggle-notifications>
+                <div v-if="loading">Loading...</div>
+                <toggle-notifications v-if="!loading" v-bind:checked="showNotifications"></toggle-notifications>
             </p>
         </article>`
 };
-
-export {swNotification};
