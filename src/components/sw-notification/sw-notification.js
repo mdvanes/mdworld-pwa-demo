@@ -22,16 +22,45 @@ export default {
                     this.showNotifications = JSON.parse(data).sendUptime;
                     this.loading = false;
                 });
+        },
+        alertExample() {
+            alert('Wow, so magical!');
+        },
+        notificationExample() {
+            const spawnNotification = function() {
+                if(Notification.permission === 'granted') {
+                    new Notification('Watch this Notification!', {
+                        // http://crocodillon.com/blog/parsing-emoji-unicode-in-javascript
+                        // https://r12a.github.io/apps/conversion/
+                        body: 'Even more magical! \uD83D\uDE01'
+                    });
+                }
+            };
+            if(!('Notification' in window)) {
+                alert('This browser does not support system notifications');
+            } else if(Notification.permission === 'denied') {
+                return;
+            } else if(Notification.permission !== 'denied' && Notification.permission !== 'granted') {
+                Notification.requestPermission(() => {
+                    spawnNotification();
+                });
+            }
+            spawnNotification();
         }
     },
     template:
         `<article>
             <h2 id="notification-api">Service Worker Notification API</h2>
             <p>
-                Serviceworker Notifications do not work just like an <code>alert()</code> that happens to render
-                outside the browser. Because the Notification is ran on an Service Worker
+                Notifications work just like an <code>alert()</code> that renders outside the browser. You do need to
+                ask permission from the user.
+                <button class="btn btn-clear" @click="alertExample">Try out an alert!</button>
+                <button class="btn btn-clear" @click="notificationExample">Try out a basic Notification!</button>
+            </p>
+            <p>
+                Notifications that are ran by a Service Worker
                 (<a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification">docs</a>)
-                they are more capable: as long as the back-end server is running and sending
+                are even more capable: as long as the back-end server is running and sending
                 notifications through Google Cloud Messaging it will show up on the device that has registered
                 on it. Even if the browser is closed!<br/>
                 To test this, toggle "show notificatons" below to "on". This
